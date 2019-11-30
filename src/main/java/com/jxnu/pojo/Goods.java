@@ -7,9 +7,18 @@ public class Goods {
     private int price;
     private int orderid;
     private int reserve;
+    private int salestatus;
     private String goodname;
     private String imgroad;
     private String descripe;
+
+    public int getSalestatus() {
+        return salestatus;
+    }
+
+    public void setSalestatus(int salestatus) {
+        this.salestatus = salestatus;
+    }
 
     public int getGoodid() {
         return goodid;

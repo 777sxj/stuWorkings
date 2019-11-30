@@ -19,13 +19,13 @@ public class UserController {
     @RequestMapping(value = "/login")
     public String login(HttpServletRequest request, String username, String password) {
         Boolean b = userService.userLogin(username, password);
-        System.out.println(b);
+        System.out.println("密码"+b);
         if (b == true) {
             HttpSession session = request.getSession();
             String userid = userService.queryUserIdByUsername(username);
             session.setAttribute("userid",userid);
             session.setAttribute("username",username);
-            System.out.println(username);
+            System.out.println("用户名是:"+username);
             return "forward:main";
         } else {
         return "redirect:index.jsp";
@@ -41,4 +41,5 @@ public class UserController {
     public String toMessage(){
         return "messageView";
     }
+
 }

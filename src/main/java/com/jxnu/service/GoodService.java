@@ -9,4 +9,8 @@ public interface GoodService {
     List<Goods> queryAllGood();
     List<Goods> searchGoods(String searchGoodsName);
     Goods searchMaxGoodId();
+    boolean unloadedGoods(int userid,int goodid);
+    List<Goods> queryUserUnselling(int userid);
+    boolean onSaleAgain(int userid,int goodid);
+    boolean onSale(Goods good);
 }

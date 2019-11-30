@@ -78,7 +78,7 @@
           <h3>...or sign up:</h3>
           <a href="#" class="btn btn-default btn-lg disabled" role="button">Sign up!</a>
           </div>
-          
+
         </div>
       </div>
 

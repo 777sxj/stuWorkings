@@ -47,10 +47,10 @@
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">我的闲置 <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="${pageContext.request.contextPath}/toUserSelling">出售中</a></li>
-                        <li><a href="#">这个功能我没想好！</a></li>
+                        <li><a href="${pageContext.request.contextPath}/userSelling">出售中</a></li>
+                        <li><a href="${pageContext.request.contextPath}/userUnselling">已下架</a></li>
                         <li role="separator" class="divider"></li>
-                        <li><a href="#">Something else here</a></li>
+                        <li><a href="${pageContext.request.contextPath}/">上架新商品</a></li>
                     </ul>
                 </li>
             </ul>
@@ -69,7 +69,24 @@
 
         <tbody>
         <tr>
-            <td><a href="#"><img src="http://localhost:8080/whh${good.imgroad}"></a><a href="">下架</a></td>
+            <td><a href="#"><img src="http://localhost:8080/whh${good.imgroad}"></a><a href="${pageContext.request.contextPath}/unloadedGoods?goodid=${good.goodid}">下架</a></td>
+        </tr>
+        </tbody>
+    </c:forEach>
+</table>
+
+<table class="table .table-striped">
+    <c:forEach var="good" items="${userUnsellingList}">
+        <thead>
+        <tr>
+            <th>${good.goodname}</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr>
+                <%--下架商品--%>
+            <td><a href="#"><img src="http://localhost:8080/whh${good.imgroad}"></a><a href="${pageContext.request.contextPath}/onSaleAgain?goodid=${good.goodid}">重新上架</a></td>
         </tr>
         </tbody>
     </c:forEach>

@@ -18,7 +18,29 @@
         select * from goods where goodname like CONCAT('%',#{arg0},'%')
     </select>
 
+    <update id="unloadedGoods">
+        update goods
+        set salestatus = '2'
+        where userid = #{arg0} and goodid = #{arg1}
+    </update>
+
     <select id="searchMaxGoodId" resultType="Goods">
         select * from goods GROUP BY goodid ORDER BY goodid DESC LIMIT 1
     </select>
+
+    <select id="queryUserUnselling" resultType="Goods">
+        select * from goods
+        where userid=#{arg0} and salestatus='2'
+    </select>
+
+    <update id="onSaleAgain">
+        update goods
+        set salestatus = '1'
+        where userid = #{arg0} and goodid = #{arg1}
+    </update>
+
+    <insert id="onSale" parameterType="Goods">
+        insert into goods(goodid,userid,typeid,goodname,price,descripe,reserve,imgroad,salestatus)
+        value (#{goodid},#{userid},#{userid},#{goodname},#{price},#{descripe},#{reserve},#{imgroad},#{salestatus})
+    </insert>
 </mapper>
