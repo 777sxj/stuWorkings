@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.jxnu.dao.GoodMapper">
+
+    <select id="queryUserSelling" resultType="Goods">
+        select * from goods
+        where userid=#{arg0} and salestatus='1'
+    </select>
+
+    <select id="queryAllGood" resultType="Goods">
+        select * from goods
+    </select>
+
+    <select id="searchGoods" resultType="Goods">
+        select * from goods where goodname like CONCAT('%',#{arg0},'%')
+    </select>
+
+    <select id="searchMaxGoodId" resultType="Goods">
+        select * from goods GROUP BY goodid ORDER BY goodid DESC LIMIT 1
+    </select>
+</mapper>
